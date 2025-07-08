@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POY Latam - Excelencia en Fotografía Documental</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #ff6b35;
+            --accent-color: #f8f9fa;
+            --text-color: #333;
+            --gradient-bg: linear-gradient(135deg, #ffffff 0%, #000000 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+.navbar-logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 30px;
+    }
+    
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+}
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color) !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-hero {
+            background: var(--secondary-color);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-hero:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .custom-carousel {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            height: 500px;
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 60px 40px 40px;
+            transform: translateY(100%);
+            transition: all 0.5s ease;
+        }
+
+        .carousel-item.active .carousel-content {
+            transform: translateY(0);
+        }
+
+        .carousel-content h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .carousel-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-control-prev {
+            left: 20px;
+        }
+
+        .carousel-control-next {
+            right: 20px;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background: var(--secondary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-indicators {
+            bottom: 20px;
+        }
+
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators button.active {
+            background: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 100px 0;
+        }
+
+        .info-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .info-card .icon img {
+            width: 90%;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .info-card .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient-bg);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            margin-bottom: 40px;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Categories Section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-card-content {
+            padding: 25px;
+        }
+
+        .category-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .category-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section Styles */
+        .contact-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f0f4ff, #e0f0ff);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .contact-subtitle {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #60696d;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: #f9fbfd;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #000000;
+            box-shadow: 0 0 8px rgba(8, 35, 65, 0.3);
+            outline: none;
+        }
+
+        .contact-btn {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.03);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .testimonials-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .testimonials-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 40px;
+        }
+
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: #f9f9f9;
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            max-width: 350px;
+            flex: 1 1 300px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid #007bff;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .testimonial-author {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .testimonial-role {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+                /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* CHATBOT STYLES - ENHANCED VERSION */
+
+
+        
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chatbot-toggle {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.chatbot-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+}
+
+.chatbot-toggle:hover::before {
+    opacity: 1;
+}
+
+.chatbot-toggle i {
+    position: relative;
+    z-index: 2;
+    animation: pulse 2s infinite;
+}
+
+.chatbot-notification {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    animation: bounce 2s infinite;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.chatbot-window {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    width: 480px;
+    height: 650px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUpBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.chatbot-window.active {
+    display: flex;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.chatbot-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: headerShine 3s ease-in-out infinite;
+}
+
+.chatbot-header-info {
+    position: relative;
+    z-index: 2;
+}
+
+.chatbot-header h4 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-header p {
+    margin: 8px 0 0 0;
+    font-size: 0.9rem;
+    opacity: 0.95;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    background: #2ed573;
+    border-radius: 50%;
+    display: inline-block;
+    animation: statusPulse 2s infinite;
+    box-shadow: 0 0 10px rgba(46, 213, 115, 0.6);
+}
+
+.chatbot-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.chatbot-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+.chatbot-messages::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23000" fill-opacity="0.02"/><circle cx="75" cy="75" r="1" fill="%23000" fill-opacity="0.02"/><circle cx="50" cy="10" r="1" fill="%23000" fill-opacity="0.02"/><circle cx="10" cy="60" r="1" fill="%23000" fill-opacity="0.02"/><circle cx="90" cy="40" r="1" fill="%23000" fill-opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.message {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    animation: messageSlideIn 0.5s ease;
+    position: relative;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.initial {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.message.initial .message-content {
+    background: none;
+    color: inherit;
+    max-width: 100%;
+    padding: 0;
+    box-shadow: none;
+}
+
+.message-content {
+    max-width: 85%;
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.message-content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.message.bot .message-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #2c3e50;
+    border-bottom-left-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.message.user .message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+}
+
+.message-avatar:hover {
+    transform: scale(1.1);
+}
+
+.message.user .message-avatar {
+    order: 2;
+    margin-right: 0;
+    margin-left: 12px;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4);
+}
+
+.chatbot-input-area {
+    padding: 25px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.quick-responses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.quick-response {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    color: #667eea;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-response::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: left 0.4s ease;
+    z-index: 1;
+}
+
+.quick-response:hover::before {
+    left: 0;
+}
+
+.quick-response:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.quick-response i,
+.quick-response span {
+    position: relative;
+    z-index: 2;
+}
+
+.chatbot-input-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.chatbot-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.chatbot-send {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.chatbot-send::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.chatbot-send:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.chatbot-send:hover::before {
+    opacity: 1;
+}
+
+.chatbot-send i {
+    position: relative;
+    z-index: 2;
+}
+
+.chatbot-send:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.chatbot-footer {
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-footer small {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 25px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    backdrop-filter: blur(10px);
+}
+
+.typing-dot {
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+
+/* Enhanced Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes slideUpBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes messageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes headerShine {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes statusPulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(46, 213, 115, 0.6); }
+    50% { transform: scale(1.2); box-shadow: 0 0 20px rgba(46, 213, 115, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 10px rgba(46, 213, 115, 0.6); }
+}
+
+@keyframes typingBounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-15px);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.animate-on-scroll.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chatbot-window {
+        width: 320px;
+        height: 500px;
+        right: -10px;
+        bottom: 80px;
+    }
+
+    /* Ejemplo de clase genérica para el chatbot */
+.chatbot-container {
+    width: 200px;       /* aumenta el ancho */
+    height: 2000px;      /* aumenta el alto */
+    max-width: none;    /* desactiva límites */
+    max-height: none;
+}
+
+
+    .chatbot-toggle {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .quick-responses {
+        max-height: 100px;
+    }
+
+    .quick-response {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .message-content {
+        font-size: 0.9rem;
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot-window {
+        width: 300px;
+        height: 450px;
+        right: -15px;
+    }
+
+    .chatbot-messages {
+        padding: 20px;
+    }
+
+    .chatbot-input-area {
+        padding: 200px;
+    }
+}
+    </style>
+</head>
+<body>
+   <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#home">
+            <img src="https://scontent.flim18-1.fna.fbcdn.net/v/t1.15752-9/515193769_1761469694510390_5925127307004328453_n.png?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=IxqewVLzaNMQ7kNvwE3apEU&_nc_oc=AdmgK2GQ12Zn_eeNzfMCr2Ug4G0YDDTL2WQXbwTcDDNtK6c97xrjJrK_AKLHRlvFqko&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.flim18-1.fna&oh=03_Q7cD2wHeAbmAwYINtwS8ckD9CnCHnYXmvP5DqSWa6mcrG0a9pA&oe=6894DE0A" 
+                 alt="Logo Ayacucho" 
+                 class="navbar-logo me-2">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#categories">Categorías</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#winners">Ganadores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero" style="background: url('https://scontent.flim18-2.fna.fbcdn.net/v/t1.15752-9/514401152_713318614898259_8352995451082728113_n.png?_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_ohc=pV96gR8uTIkQ7kNvwFWW35n&_nc_oc=Adn3NooJwXHQIeNaUGePK97OQf270YHlX1QwB-IVkGoxw3DebdS_ukjcIrzi2j4UMpw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.flim18-2.fna&oh=03_Q7cD2wFSkT0IcqP6AP5Iv_cXX2tIRdMtVk-rQcZmXYFHRBxDJg&oe=6894D982') center center/cover no-repeat;">
+        <div class="hero-content text-center text-white">
+           
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section" id="carousel">
+        <div class="container">
+            <h2 class="section-title">Trabajos Destacados</h2>
+            <p class="section-subtitle">Descubre las historias más impactantes capturadas por los mejores fotógrafos documentales de Iberoamérica</p>
+            
+            <div id="featuredCarousel" class="carousel slide custom-carousel" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="4"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="5"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="6"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <img src="https://poylatam.org/wp-content/uploads/2024/04/10-10-c1ae0534-438f-420a-b9f5-22922119ae3c-1100x734.jpg" alt="Fotografía Documental">
+                        <div class="carousel-content">
+                            <h3>Josué Sañudo Quispe</h3>
+                                                        <p>German Sañudo Maldonado, padre de Josué Sañudo Quispe (31), deja entre lágrimas un ramo de flores en el lugar donde su hijo fue asesinado el 15 de diciembre, por un proyectil de arma de fuego disparado por los militares durante las protestas contra el gobierno de Dina Boluarte. A diez metros de este lugar también se encontraba herido Clemer Rojas (23), quien falleció tan solo algunos minutos después. En el lugar, cerca del Aeropuerto Coronel FAP Alfredo Mendivil Duarte de Ayacucho, hay una pared de ladrillos en la que se pueden observar al menos seis agujeros de bala, lo que demostraría que los militares dispararon a matar. 29 de diciembre del 2022.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <img src="https://poylatam.org/wp-content/uploads/2024/04/1-01-02f306e6-8dc5-4ff9-af74-dd43f227e5c8-1100x734.jpg" alt="Vida Cotidiana">
+                        <div class="carousel-content">
+                            <h3>Ricardina Arango Cerna</h3>
+                            <p>Ricardina Arango Cerna sostiene un ramo de flores que lleva en honor a su hijo, Edgar Prado Arango (51), asesinado en la puerta de su casa por un proyectil de arma de fuego disparado por los militares el 15 de diciembre, mientras intentaba ayudar a un ciudadano herido durante las protestas contra el gobierno de Dina Baluarte a dos calles del Aeropuerto Coronel FAP Alfredo Mendivil Duarte de Ayacucho, Perú. 28 de diciembre de 2022.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <img src="https://poylatam.org/wp-content/uploads/2024/04/2-02-42dfc65a-82cc-46f4-9f82-6ad46c3b5e5f-1100x734.jpg" alt="Derechos Humanos">
+                        <div class="carousel-content">
+                            <h3>Jhonatan Alarcón Galindo</h3>
+                            <p>Familiares de Jhonatan Alarcón Galindo (19) lloran sobre su féretro antes de ser llevado al cementerio de la comunidad de Llachoccmayo, a una hora de la ciudad de Ayacucho, Perú. Jhonatan fue herido de gravedad el 15 de diciembre mientras protestaba contra el gobierno de Dina Boluarte y exigía una Asamblea Constituyente. El proyectil de arma de fuego le causó daño abdominal y fracturas en la cadera, daños que no pudo resistir, falleciendo el 21 de diciembre en el Hospital Regional de Ayacucho. 23 de diciembre de 2022.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-item">
+                        <img src="https://poylatam.org/wp-content/uploads/2024/04/3-03-52dea052-9c61-47aa-8d48-d3d2f0a39050-1100x734.jpg" alt="Medio Ambiente">
+                        <div class="carousel-content">
+                            <h3>Nilda García</h3>
+                            <p>Nilda García sostiene los casquillos de las balas que encontró en el lugar donde fue asesinado su hijo, Clemer Rojas (23). Clemer recibió el 15 de diciembre, durante las protestas contra el gobierno de Dina Boluarte, dos impactos de bala que le perforaron el hígado y el riñón. Más balas como esas también causaron la muerte de otras 9 víctimas. 26 de diciembre del 2022.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="carousel-item">
+                        <img src="https://poylatam.org/wp-content/uploads/2024/04/4-04-77c58df3-43b2-4ff7-a616-c6d56ce39840-1100x734.jpg" alt="Resiliencia Urbana">
+                        <div class="carousel-content">
+                            <h3>Hijo estudiaba mecánica</h3>
+                            <p>Nilda llora sobre la camisa que su hijo Clemer usaba para ir a estudiar. Según la costumbre que existe en la Sierra, el quinto día después de una muerte los familiares van a lavar toda la ropa del finado. Los bultos que aparecen en la fotografía contienen toda la ropa de Clemer. Nilda ha sacado de ahí la camisa del Instituto Senati (centro de Formación Tecnológica Superior), donde su hijo estudiaba mecánica automotriz. Clemer había estado un año en el servicio militar, pero lo dejó porque quiso estudiar para ayudar a su familia.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="carousel-item">
+                        <img src="https://poylatam.org/wp-content/uploads/2024/04/5-05-59301cb5-b09f-4d57-9bb2-769676d7958e-1100x734.jpg" alt="Cultura Viva">
+                        <div class="carousel-content">
+                            <h3>Cultura Viva</h3>
+                            <p>En la foto de la izquierda aparece Narcisa Yucra, asesinada por los Senderistas; su hijo Andrés Aguilar fue asesinado por los militares en 1984. Fue durante el conflicto interno que vivió Perú entre 1980 y 2000, que enfrentó a las Fuerzas Armadas con el grupo Sendero Luminoso. Hasta la fecha sus cuerpos no han sido encontrados. Ahora, cuatro décadas después de aquel hecho por el que aún no se ha hecho justicia, el bisnieto de Narcisa, Luis Aguilar Yucra, es asesinado por los militares durante las protestas. Es el dolor eterno de Ayacucho, el de muchos familiares que no pueden encontrar a sus seres queridos y ahora se enfrentan a esto. En Perú hay más de 20.000 desaparecidos; hasta la fecha se han entregado a las familias cerca de un millar de cuerpos. 26 de diciembre de 2022.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7 -->
+                    <div class="carousel-item">
+                        <img src="https://poylatam.org/wp-content/uploads/2024/04/9-09-bed0c315-ae1f-456c-aa54-f044ef419f3e-1100x734.jpg" alt="Migración y Frontera">
+                        <div class="carousel-content">
+                            <h3>Janet Román</h3>
+                            <p>Janet Román Pareja es abrazada por sus hijas mientras miran el lugar en el que su esposo y padre, respectivamente, Raúl García Gallo (35), fue asesinado mientras participaba en las protestas contra el gobierno de Dina Boluarte y el Congreso. Ayacucho (Perú). 28 de diciembre de 2022.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="info-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">¿Qué es Ayacucho: Heridas que no cierran?</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <img src="https://revistacomun.com/wp-content/uploads/2023/01/ayacucho1.jpeg" alt="Misión">
+                        </div>
+                        <h3>Nuestra Misión</h3>
+                        <p>"El Dolor Eterno de Ayacucho" es un proyecto que retrata la memoria de la violencia y el dolor de los familiares de miles de desaparecidos durante el conflicto armado interno en Ayacucho, Perú. "Ayacucho: Heridas que no cierran" visibiliza historias como esta para preservar la memoria y generar reflexión en Iberoamérica.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <img src="https://ojo-publico.com/sites/default/files/inline-images/ROMERIA%20EN%20SOLIDARIDAD%20CON%20FAMILIARES%20DEL%2015D.jpg" alt="Transparencia">
+                        </div>
+                        <h3>Transparencia Total</h3>
+                        <p>A través de este trabajo documental, se muestra de forma abierta el impacto de la represión y las desapariciones forzadas, invitando a la comunidad a conocer y debatir estas historias que siguen marcando a generaciones enteras.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <img src="https://ojo-publico.com/sites/default/files/inline-images/Yuri%20Huaynalaya%20ayacucho%2015%20de%20diciembre%202022%20fallecidos.JPG" alt="Sin Fines de Lucro">
+                        </div>
+                        <h3>Sin Fines de Lucro</h3>
+                        <p>El proyecto se realiza sin fines de lucro y gracias al compromiso de fotógrafos y colaboradores que, de manera gratuita, documentan y comparten estas memorias para que ninguna historia quede en el silencio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Derechos Humanos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #ffffff;
+            color: #333;
+            min-height: 100vh;
+        }
+
+    
+        .emergency-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff1744 0%, #d50000 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(255, 23, 68, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #6b6262 0%, #000000 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            box-shadow: 0 15px 35px rgba(79, 172, 254, 0.3);
+            border: 2px solid #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(79, 172, 254, 0.4);
+        }
+
+        .card h3 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .file-input {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input label {
+            background: linear-gradient(135deg, #ffffff 0%, #000000 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+        }
+
+        .file-input label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5722 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
+            box-shadow: 0 5px 15px rgba(0, 230, 118, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 25px rgba(0, 230, 118, 0.5);
+        }
+
+        .location-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .evidence-preview {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .evidence-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .emergency-contacts {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: none;
+            z-index: 1001;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .contact-item button {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .lawyers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .lawyer-card {
+            background: linear-gradient(135deg, #ffffff 0%, #000000 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .lawyer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(156, 39, 176, 0.4);
+        }
+
+        .lawyer-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            background: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+        .recursos-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background: linear-gradient(135deg, #3c3c3c 0%, #000000 100%);
+    padding: 30px;
+    border-radius: 20px;
+    color: white;
+    margin: 40px auto;
+    max-width: 1200px;
+    justify-content: space-between;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.recursos-horizontal {
+    padding: 25px;
+    background: linear-gradient(135deg, #3c3c3c 0%, #000000 100%);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.horizontal-contenido {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.info-bloque {
+    flex: 1;
+    min-width: 250px;
+}
+
+.info-bloque h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.info-bloque p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="modal-overlay" id="modalOverlay"></div>
+    
+    <div class="emergency-contacts" id="emergencyContacts">
+        <h3>🚨 Contactos de Emergencia</h3>
+        <div class="contact-item">
+            <span>Policía Nacional del Perú</span>
+            <button onclick="callEmergency('105')">Llamar 105</button>
+        </div>
+        <div class="contact-item">
+            <span>Defensoría del Pueblo</span>
+            <button onclick="callEmergency('0800-15170')">Llamar 0800-15170</button>
+        </div>
+        <div class="contact-item">
+            <span>Línea 100 (Violencia)</span>
+            <button onclick="callEmergency('100')">Llamar 100</button>
+        </div>
+        <div class="contact-item">
+            <span>Serenazgo Lima</span>
+            <button onclick="callEmergency('115')">Llamar 115</button>
+        </div>
+        <button class="btn" onclick="closeEmergencyContacts()">Cerrar</button>
+    </div>
+
+    <button class="emergency-btn" onclick="showEmergencyContacts()">
+        🚨 EMERGENCIA
+    </button>
+
+    <div class="container">
+        <header>
+            <h1>🛡️ Plataforma de Derechos Humanos</h1>
+            <p>Documentación segura y anónima de violaciones a los derechos humanos</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- Registro de Pruebas -->
+            <div class="card">
+                <h3>📸 Registro de Pruebas</h3>
+                <form id="evidenceForm">
+                    <div class="form-group">
+                        <label>Tipo de Incidente:</label>
+                        <select id="incidentType">
+                            <option value="">Seleccionar...</option>
+                            <option value="violencia-policial">Violencia Policial</option>
+                            <option value="discriminacion">Discriminación</option>
+                            <option value="censura">Censura</option>
+                            <option value="detencion-arbitraria">Detención Arbitraria</option>
+                            <option value="violencia-genero">Violencia de Género</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción del Incidente:</label>
+                        <textarea id="description" placeholder="Describe lo sucedido con el mayor detalle posible..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha y Hora:</label>
+                        <input type="datetime-local" id="incidentDateTime">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="file-input">
+                            <input type="file" id="evidenceFiles" multiple accept="image/*,video/*,audio/*">
+                            <label for="evidenceFiles">📁 Subir Archivos (Fotos, Videos, Audio)</label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn" onclick="getLocation()">📍 Obtener Ubicación Actual</button>
+                    
+                    <div class="location-info" id="locationInfo" style="display: none;">
+                        <strong>Ubicación registrada:</strong>
+                        <div id="locationDetails"></div>
+                    </div>
+
+                    <div class="evidence-preview" id="evidencePreview" style="display: none;">
+                        <h4>Archivos Seleccionados:</h4>
+                        <div id="evidenceList"></div>
+                    </div>
+
+                    <button type="submit" class="btn">💾 Guardar Pruebas</button>
+                </form>
+                <div class="success-message" id="evidenceSuccess">
+                    ✅ Pruebas guardadas de forma segura
+                </div>
+            </div>
+
+            <!-- Denuncias Anónimas -->
+            <div class="card">
+                <h3>📋 Denuncia Anónima</h3>
+                <form id="complaintForm">
+                    <div class="form-group">
+                        <label>Entidad Destinataria:</label>
+                        <select id="targetEntity">
+                            <option value="">Seleccionar...</option>
+                            <option value="defensoria">Defensoría del Pueblo</option>
+                            <option value="cidh">CIDH - Comisión Interamericana de DDHH</option>
+                            <option value="onu">ONU - Derechos Humanos</option>
+                            <option value="amnistia">Amnistía Internacional</option>
+                            <option value="hrw">Human Rights Watch</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de Violación:</label>
+                        <select id="violationType">
+                            <option value="">Seleccionar...</option>
+                            <option value="tortura">Tortura</option>
+                            <option value="desaparicion">Desaparición Forzada</option>
+                            <option value="ejecucion">Ejecución Extrajudicial</option>
+                            <option value="libertad-expresion">Libertad de Expresión</option>
+                            <option value="debido-proceso">Debido Proceso</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Relato de los Hechos:</label>
+                        <textarea id="complaintDescription" placeholder="Describe los hechos de manera detallada y cronológica..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ubicación del Incidente:</label>
+                        <input type="text" id="incidentLocation" placeholder="Dirección o referencia del lugar">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Testigos o Involucrados:</label>
+                        <textarea id="witnesses" placeholder="Nombres, roles o descripción de personas involucradas..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">📤 Enviar Denuncia Anónima</button>
+                </form>
+                <div class="success-message" id="complaintSuccess">
+                    ✅ Denuncia enviada de forma anónima
+                </div>
+            </div>
+
+            <!-- Contacto con Abogados -->
+            <div class="card">
+                <h3>⚖️ Contacto con Abogados</h3>
+                <p>Conecta con abogados especializados en derechos humanos</p>
+                
+                <div class="form-group">
+                    <label>Área de Especialización:</label>
+                    <select id="legalArea">
+                        <option value="">Seleccionar...</option>
+                        <option value="penal">Derecho Penal</option>
+                        <option value="constitucional">Derecho Constitucional</option>
+                        <option value="internacional">Derecho Internacional</option>
+                        <option value="laboral">Derecho Laboral</option>
+                        <option value="familia">Derecho de Familia</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="showLawyers()">🔍 Buscar Abogados</button>
+
+                <div class="lawyers-grid" id="lawyersGrid" style="display: none;">
+                    <div class="lawyer-card">
+                        <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;">👨‍⚖️</div>
+                        <h4>Dr. Carlos Mendoza</h4>
+                        <p>Especialista en DDHH</p>
+                        <p>📱 +51 999 123 456</p>
+                        <button class="btn" onclick="contactLawyer('Dr. Carlos Mendoza')">Contactar</button>
+                    </div>
+                    <div class="lawyer-card">
+                        <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;">👩‍⚖️</div>
+                        <h4>Dra. María López</h4>
+                        <p>Derecho Constitucional</p>
+                        <p>📱 +51 999 789 012</p>
+                        <button class="btn" onclick="contactLawyer('Dra. María López')">Contactar</button>
+                    </div>
+                    <div class="lawyer-card">
+                        <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;">👨‍⚖️</div>
+                        <h4>Dr. José Rivera</h4>
+                        <p>Derecho Penal</p>
+                        <p>📱 +51 999 345 678</p>
+                        <button class="btn" onclick="contactLawyer('Dr. José Rivera')">Contactar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información y Recursos -->
+            <div class="card">
+                <h3>📚 Recursos e Información</h3>
+                <div style="text-align: left;">
+                    <h4>🔒 Seguridad y Privacidad</h4>
+                    <p>• Toda la información se cifra automáticamente</p>
+                    <p>• Las denuncias son completamente anónimas</p>
+                    <p>• Tus datos están protegidos con encriptación de extremo a extremo</p>
+                    
+                    <h4 style="margin-top: 20px;">📞 Líneas de Ayuda</h4>
+                    <p>• <strong>Defensoría del Pueblo:</strong> 0800-15170</p>
+                    <p>• <strong>Línea 100:</strong> Violencia familiar</p>
+                    <p>• <strong>CEM:</strong> Centro de Emergencia Mujer</p>
+                    
+                    <h4 style="margin-top: 20px;">🌐 Organizaciones Internacionales</h4>
+                    <p>• CIDH - Comisión Interamericana de DDHH</p>
+                    <p>• Amnistía Internacional</p>
+                    <p>• Human Rights Watch</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLocation = null;
+        let evidenceFiles = [];
+
+        // Funciones de geolocalización
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("La geolocalización no es soportada por este navegador.");
+            }
+        }
+
+        function showPosition(position) {
+            currentLocation = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                timestamp: new Date().toISOString()
+            };
+            
+            document.getElementById('locationInfo').style.display = 'block';
+            document.getElementById('locationDetails').innerHTML = `
+                <p>Latitud: ${currentLocation.latitude.toFixed(6)}</p>
+                <p>Longitud: ${currentLocation.longitude.toFixed(6)}</p>
+                <p>Fecha: ${new Date(currentLocation.timestamp).toLocaleString()}</p>
+            `;
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("Permiso de ubicación denegado por el usuario.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Información de ubicación no disponible.");
+                    break;
+                case error.TIMEOUT:
+                    alert("Tiempo de espera agotado para obtener la ubicación.");
+                    break;
+                default:
+                    alert("Error desconocido al obtener la ubicación.");
+                    break;
+            }
+        }
+
+        // Manejo de archivos de evidencia
+        document.getElementById('evidenceFiles').addEventListener('change', function(e) {
+            evidenceFiles = Array.from(e.target.files);
+            displayEvidencePreview();
+        });
+
+        function displayEvidencePreview() {
+            const preview = document.getElementById('evidencePreview');
+            const list = document.getElementById('evidenceList');
+            
+            if (evidenceFiles.length > 0) {
+                preview.style.display = 'block';
+                list.innerHTML = '';
+                
+                evidenceFiles.forEach(file => {
+                    const item = document.createElement('div');
+                    item.className = 'evidence-item';
+                    
+                    let icon = '📄';
+                    if (file.type.startsWith('image/')) icon = '📷';
+                    if (file.type.startsWith('video/')) icon = '🎥';
+                    if (file.type.startsWith('audio/')) icon = '🎵';
+                    
+                    item.innerHTML = `
+                        <span>${icon} ${file.name}</span>
+                        <small>(${(file.size / 1024 / 1024).toFixed(2)} MB)</small>
+                    `;
+                    list.appendChild(item);
+                });
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        // Formulario de evidencia
+        document.getElementById('evidenceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const evidence = {
+                incidentType: document.getElementById('incidentType').value,
+                description: document.getElementById('description').value,
+                dateTime: document.getElementById('incidentDateTime').value,
+                files: evidenceFiles.map(f => f.name),
+                location: currentLocation,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Simular guardado seguro
+            console.log('Evidencia guardada:', evidence);
+            
+            document.getElementById('evidenceSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('evidenceSuccess').style.display = 'none';
+            }, 3000);
+        });
+
+        // Formulario de denuncia
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const complaint = {
+                targetEntity: document.getElementById('targetEntity').value,
+                violationType: document.getElementById('violationType').value,
+                description: document.getElementById('complaintDescription').value,
+                location: document.getElementById('incidentLocation').value,
+                witnesses: document.getElementById('witnesses').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Simular envío anónimo
+            console.log('Denuncia enviada:', complaint);
+            
+            document.getElementById('complaintSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('complaintSuccess').style.display = 'none';
+            }, 3000);
+        });
+
+        // Funciones de emergencia
+        function showEmergencyContacts() {
+            document.getElementById('modalOverlay').style.display = 'block';
+            document.getElementById('emergencyContacts').style.display = 'block';
+        }
+
+        function closeEmergencyContacts() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('emergencyContacts').style.display = 'none';
+        }
+
+        function callEmergency(number) {
+            if (confirm(`¿Deseas llamar al ${number}?`)) {
+                window.location.href = `tel:${number}`;
+            }
+        }
+
+        // Funciones de abogados
+        function showLawyers() {
+            document.getElementById('lawyersGrid').style.display = 'grid';
+        }
+
+        function contactLawyer(name) {
+            alert(`Contactando con ${name}. En un entorno real, esto abriría un chat seguro o formulario de contacto.`);
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('modalOverlay').addEventListener('click', function() {
+            closeEmergencyContacts();
+        });
+
+        // Inicializar fecha actual
+        document.getElementById('incidentDateTime').value = new Date().toISOString().slice(0, 16);
+    </script>
+</body>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <h2 class="contact-title">Contáctanos</h2>
+            <p class="contact-subtitle">¿Tienes preguntas, sugerencias o deseas colaborar con nosotros? Escríbenos.</p>
+
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" placeholder="Tu mensaje" required></textarea>
+                </div>
+                <button type="submit" class="contact-btn">Enviar mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section class="testimonials-section" id="testimonios">
+        <div class="container">
+            <h2 class="testimonials-title">Testimonios</h2>
+            <p class="testimonials-subtitle">Esto es lo que dicen algunos de nuestros participantes y colaboradores:</p>
+
+            <div class="testimonials-container">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-card">
+                    <img src="https://images.ctfassets.net/owmn3xt273ds/437cQsmpdpx3f0wvgbG6Fh/0b5530bc667df0bd3e0b93b97a0a19e6/NS_20231218f.jpg?fm=webp" alt="Ana Morales" class="testimonial-img">
+                    <p class="testimonial-text">"Mi hijo cuando ve a un policía, a un militar es traumatizante para él, para mí también. A toda la familia nos han afectado. Prácticamente con miedo caminamos ya", mencionaba dos días atrás, Karina Marapi, madre de Alex Ávila Marapi de 20 años, joven herido con un proyectil en el hombro izquierdo.</p>
+                    <h4 class="testimonial-author">Ana Morales</h4>
+                    <span class="testimonial-role">Fotógrafa documental</span>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="testimonial-card">
+                    <img src="https://gdb.voanews.com/50e16e87-be3c-43a6-ba8c-43d01ab404f4_w408_r1_s.jpg" alt="Luis Paredes" class="testimonial-img">
+                    <p class="testimonial-text">"Mientras esto ocurría, la hija de uno de los difuntos, entre lágrimas, increpaba a los efectivos policiales que se encontraban en la pista del aeropuerto, al otro lado de las vallas. "¿Hasta dónde quieren llegar?, ¿Por qué no nos dejan buscar justicia?", decía."</p>
+                    <h4 class="testimonial-author">Luis Paredes</h4>
+                    <span class="testimonial-role">Participante 2023</span>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="testimonial-card">
+                    <img src="https://ojo-publico.com/sites/default/files/inline-images/ayacucho%2015%20de%20diciembre%20fallecidos%20protestas.JPG" alt="Camila Fernández" class="testimonial-img">
+                    <p class="testimonial-text">Finalmente, en la noche del viernes, realizaron una vigilia. En el suelo tendieron las wifalas hechas por ellos mismos y colocaron los retablos que han elaborado. Se encendieron las velas negras en honor a los caídos, se entonan nostálgicas melodías y exigieron Justicia.</p>
+                    <h4 class="testimonial-author">Camilo Fernández</h4>
+                    <span class="testimonial-role">Curadora invitada</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="info-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Categorías de la masacre</h2>
+            <p class="section-subtitle animate-on-scroll">"Estas categorías buscan retratar la memoria, la resistencia y la vida que florece en Ayacucho tras los crímenes cometidos durante la masacre, invitando a mirar, recordar y reflexionar."</p>
+            
+            <div class="categories-grid">
+                <div class="category-card animate-on-scroll">
+                    <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/7JNYRD4BGI3XMMMRNAYQDQHEA4.jpg" alt="Noticias">
+                    <div class="category-card-content">
+                        <h4>Noticias</h4>
+                        <p>Fotografías que documenten hechos noticiosos como la Masacre de Ayacucho, visibilizando la represión, los abusos y sus consecuencias en la sociedad peruana.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-on-scroll">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Heridos_de_los_enfrentamientos_en_Ayacucho_son_trasladados_a_Lima.jpg/960px-Heridos_de_los_enfrentamientos_en_Ayacucho_son_trasladados_a_Lima.jpg" alt="Retrato">
+                    <div class="category-card-content">
+                        <h4>Retrato</h4>
+                        <p>Retratos de sobrevivientes, familiares de víctimas y comunidades afectadas que muestran la resiliencia y la lucha por la memoria y la justicia en Ayacucho.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-on-scroll">
+                    <img src="https://lum.cultura.pe/cdi/sites/default/files/articulo/fotos/1431.jpg" alt="Deportes">
+                    <div class="category-card-content">
+                        <h4>Memoria y Justicia</h4>
+                        <p>Proyectos que registren la búsqueda de justicia por parte de familiares de las víctimas, los procesos de exhumación, los juicios y la lucha de las comunidades para mantener viva la memoria de la masacre.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-on-scroll">
+                    <img src="https://www.defensoria.gob.pe/wp-content/uploads/2022/03/Ayacucho-muerte-materna.jpg" alt="Proyectos Largo Plazo">
+                    <div class="category-card-content">
+                        <h4>Proyectos de Largo Plazo</h4>
+                        <p>Ensayos fotográficos que profundicen en las heridas abiertas de la Masacre de Ayacucho, acompañando procesos de búsqueda de justicia y verdad.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-on-scroll">
+                    <img src="https://ojo-publico.com/sites/default/files/inline-images/Yuri%20Huaynalaya%20ayacucho%20fallecidos%2015%20de%20diciembre.JPG" alt="Nuestra Mirada">
+                    <div class="category-card-content">
+                        <h4>Nuestra Mirada</h4>
+                        <p>Trabajos documentales y artísticos que exploren la memoria colectiva, la resistencia cultural y el duelo en torno a la masacre y la violencia en Ayacucho.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-on-scroll">
+                    <img src="https://imagenes.elpais.com/resizer/v2/244EBKBLNMJASMBJASB2KVP25Y.jpg?auth=8b3abb416681e73e82377f7ece8a3196a3e109c513cbf148de3e7b13d866d90f&width=414" alt="Nuevos Talentos">
+                    <div class="category-card-content">
+                        <h4>Nuevos Talentos</h4>
+                        <p>Propuestas de fotógrafos emergentes que investiguen y narren la historia de la masacre, dando voz a quienes todavía luchan por ser escuchados.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-on-scroll">
+                    <img src="https://f.rpp-noticias.io/2022/12/17/1363087000-334a43kjpg.jpg" alt="Medio Ambiente">
+                    <div class="category-card-content">
+                        <h4>Medio Ambiente</h4>
+                        <p>Fotografías que relacionen el entorno natural de Ayacucho con los lugares donde ocurrieron los hechos, resaltando la conexión entre territorio, memoria y comunidad.</p>
+                    </div>
+                </div>
+
+                <div class="category-card animate-on-scroll">
+                    <img src="https://dims.apnews.com/dims4/default/096def5/2147483647/strip/true/crop/4238x2825+0+0/resize/599x399!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F3e%2F05%2F44f16e8d33b5a85a97938c32aa38%2Fd945c7ef889149c99565bf9b9d3f64cd" alt="Vida Cotidiana">
+                    <div class="category-card-content">
+                        <h4>Vida Cotidiana</h4>
+                        <p>Imágenes que capturen cómo la comunidad de Ayacucho reconstruye su vida cotidiana, manteniendo viva la memoria de los hechos a través de costumbres, rituales y actos de resistencia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Winners Section -->
+    <section id="winners" class="info-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">EXCLUSIVO</h2>
+            <p class="section-subtitle animate-on-scroll">Conoce a los fotógrafos que han sido reconocidos por su excepcional trabajo en la última edición de Ayacucho</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>🕊️ Masacre de Ayacucho (diciembre 2022)</h3>
+                        <p>Durante las protestas tras la destitución del expresidente Pedro Castillo, 10 personas fueron asesinadas en Ayacucho por efectivos militares. La represión se dio en las inmediaciones del aeropuerto Alfredo Mendívil. El hecho es investigado como una posible violación de derechos humanos y ha generado movilización social a nivel nacional e internacional.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>🎓 Universidad Nacional de San Cristóbal de Huamanga avanza en investigación científica</h3>
+                        <p>La UNSCH, una de las principales instituciones académicas de Ayacucho, ha fortalecido sus programas de investigación, con proyectos sobre medio ambiente, salud y cultura andina, reafirmando su rol en el desarrollo intelectual de la región.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3>🐑 Reconocimiento a la Feria del Huancaray como patrimonio cultural</h3>
+                        <p>El Ministerio de Cultura declaró la tradicional Feria del Huancaray como Patrimonio Cultural de la Nación. Este evento agrícola-ganadero reúne a productores de todo el sur andino, siendo una muestra viva de la identidad ayacuchana.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>🛤️ Avances en la construcción de la Carretera Los Libertadores</h3>
+                        <p>El proyecto vial que une Ayacucho con Ica ha tenido avances significativos en su modernización. Esta carretera es clave para mejorar la conectividad y dinamizar la economía regional, especialmente en comercio y turismo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>🪔 Semana Santa de Ayacucho: Celebración religiosa y cultural internacional</h3>
+                        <p>Cada año, Ayacucho se convierte en epicentro de una de las celebraciones religiosas más grandes del Perú y América Latina. Miles de visitantes acuden a vivir las procesiones, misas y festividades que combinan fervor católico con tradiciones andinas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>💼 Exportaciones ayacuchanas alcanzan cifras récord en productos agroindustriales</h3>
+                        <p>En los últimos años, Ayacucho ha incrementado sus exportaciones de productos como palta, quinua y café orgánico. Este crecimiento refleja el impulso de asociaciones de pequeños productores y la mejora en infraestructura agrícola.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Nuestro Proceso</h2>
+            <div class="row">
+                <!-- Tarjeta 1 -->
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="info-card">
+                        <!-- Imagen desde link -->
+                        <img src="https://cdn.www.gob.pe/uploads/document/file/1401106/Ayacucho%20%281%29.jpg" 
+                             alt="Consejo Consultivo" 
+                             class="img-fluid mb-3 rounded">
+                        
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Información extraída de Ayacucho</h3>
+                        <p>
+                           El 15 de diciembre del 2023 marca el inicio de las actividades conmemorativas desde las primeras horas. Para este día, se había anunciado un paro de 24 horas. Las bodegas, mercados y comercios permanecían cerrados en señal de solidaridad por los caídos, ya que se cumplía un año de la brutal represión emprendida por el ejército peruano en las afueras del Aeropuerto Alfredo Mendívil. Durante las protestas de esa sombría tarde del 15 de diciembre del 2022 en la región cuyo nombre en quechua, significa "el rincón de los muertos", se registraron 10 fallecidos y 72 heridos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="info-card">
+                        <!-- Imagen desde link -->
+                        <img src="https://images.ctfassets.net/owmn3xt273ds/7uUeSPH7vhxAWgcuXHtH5C/6c2daff72db3b48db49439403eda73cc/NS_20231218c.jpg" 
+                             alt="Concurso 2025" 
+                             class="img-fluid mb-3 rounded">
+                        
+                        <div class="icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Masacre de Ayacucho: un año de dolor e impunidad</h3>
+                        <p>
+                            Mientras tanto, en la Basílica Catedral de Ayacucho se congregan familiares de las víctimas, los heridos, organizaciones pro derechos humanos y familiares de caídos en Puno y Andahuaylas para la celebración de una misa conmemorativa por los "Mártires de la Democracia" y la salud de los sobrevivientes. Al mismo tiempo, en la iglesia evangélica del jirón 28 de julio, durante la acción de gracia en honor de Josué Sañudo Quispe, uno de los fallecidos, el pastor insta a los presentes a buscar la justicia. "Busca el reino de Dios y su justicia. En este tiempo de conmemoración a la memoria de Josué, nosotros no podemos descansar hasta que haya justicia", declara el pastor y los feligreses responden con un "Amén" que resuena unánime.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title">Nuestro Impacto</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-number">70,000</div>
+                        <div class="stat-label">Imágenes Recibidas</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-number">1,500</div>
+                        <div class="stat-label">Fotógrafos Participantes</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-number">30,000</div>
+                        <div class="stat-label">Espectadores en Vivo</div>
+                                             </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-number">14</div>
+                        <div class="stat-label">Años de Trayectoria</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>"Ayacucho: Heridas que no cierran"</h5>
+                    <p>“Un día van a pagar, desgraciados. Estoy seguro que van a pagar. Mi último aliento va a ser pedir justicia y reírme de esos asesinos que se han reído de nosotros. Mi última palabra será: se hizo justicia. ¡Quiero vivir hasta encontrar justicia para mi hermano, Jhon!”, menciona Yovana antes de regresar a su vivienda, el lugar donde se hace el velatorio a las pertenecías de su hermano por última vez. Porque ya es hora de dejar que las almas descansen en paz, dicen. Porque ya es hora de dejarlos ir y despedirse. Lo propio hacen los demás familiares.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Navegación</h5>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#about">Acerca de</a></li>
+                        <li><a href="#categories">Categorías</a></li>
+                        <li><a href="#winners">Ganadores</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Categorías</h5>
+                    <ul>
+                        <li><a href="#">Fotoperiodista del Año</a></li>
+                        <li><a href="#">Vida Cotidiana</a></li>
+                        <li><a href="#">Derechos Humanos</a></li>
+                        <li><a href="#">Medio Ambiente</a></li>
+                        <li><a href="#">Nuevos Talentos</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Recursos</h5>
+                    <ul>
+                        <li><a href="#">Bases del Concurso</a></li>
+                        <li><a href="#">Talleres</a></li>
+                        <li><a href="#">Publicaciones</a></li>
+                        <li><a href="#">Archivo Histórico</a></li>
+                        <li><a href="#">Prensa</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 "Ayacucho: Heridas que no cierran". Todos los derechos reservados. | Concurso sin fines de lucro</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Section -->
+    <!-- Chatbot Section -->
+<div class="chatbot-container">
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+        <span class="chatbot-notification">1</span>
+    </button>
+    
+    <div class="chatbot-window chatbot-ampliado" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <h4>🤖 Asistente AYACUCHO NOTICIAS</h4>
+                <p><span class="status-indicator"></span> En línea - Respuesta inmediata</p>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">&times;</button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot initial">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    ¡Hola! Soy el asistente virtual de Ayacucho Noticias 👋<br>
+                    Estoy aquí para ayudarte con información sobre nuestro proyecto de fotografía documental en Iberoamérica.<br><br>
+                    ¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+        </div>
+
+        <div class="chatbot-input-area">
+            <div class="quick-responses">
+                <!-- botones rápidos -->
+                <div class="quick-response" data-response="¿Qué es POY Latam?"><i class="fas fa-info-circle"></i> ¿Qué es Ayacucho Noticias?</div>
+                <div class="quick-response" data-response="¿Cómo puedo participar?"><i class="fas fa-users"></i> ¿Cómo participar?</div>
+                <div class="quick-response" data-response="¿Dónde se realizan los eventos?"><i class="fas fa-map-marker-alt"></i> Eventos y ubicaciones</div>
+                <div class="quick-response" data-response="¿Qué cursos ofrecen?"><i class="fas fa-graduation-cap"></i> Cursos y talleres</div>
+                <div class="quick-response" data-response="¿Hay premios o concursos?"><i class="fas fa-trophy"></i> Premios y concursos</div>
+                <div class="quick-response" data-response="¿Cómo los contacto?"><i class="fas fa-phone"></i> Información de contacto</div>
+                <div class="quick-response" data-response="¿En qué países están?"><i class="fas fa-globe-americas"></i> Países participantes</div>
+                <div class="quick-response" data-response="¿Cuáles son los proyectos actuales?"><i class="fas fa-camera"></i> Proyectos actuales</div>
+            </div>
+
+            <div class="chatbot-input-container">
+                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Escribe tu mensaje o pregunta..." />
+                <button class="chatbot-send" id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <div class="chatbot-footer">
+                <small>Powered by Ayacucho • Respuestas instantáneas 24/7</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click event to all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    scrollToSection(targetId);
+                });
+            });
+
+            // Navbar background change on scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    if (window.scrollY > 50) {
+                        navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+                    } else {
+                        navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                    }
+                }
+            });
+
+            // Animate elements on scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('animate');
+                    }
+                });
+            }
+
+            // Initial call and scroll event
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Enhanced carousel functionality
+            const carousel = document.getElementById('featuredCarousel');
+            if (carousel) {
+                const carouselInstance = new bootstrap.Carousel(carousel, {
+                    interval: 5000,
+                    ride: 'carousel',
+                    pause: 'hover'
+                });
+
+                // Carousel slide change event
+                carousel.addEventListener('slide.bs.carousel', function(e) {
+                    // Add fade effect to carousel content
+                    const activeContent = document.querySelector('.carousel-item.active .carousel-content');
+                    if (activeContent) {
+                        activeContent.style.opacity = '0';
+                        setTimeout(() => {
+                            activeContent.style.opacity = '1';
+                        }, 200);
+                    }
+                });
+
+                // Auto-play carousel with pause on hover
+                carousel.addEventListener('mouseenter', function() {
+                    carouselInstance.pause();
+                });
+
+                carousel.addEventListener('mouseleave', function() {
+                    carouselInstance.cycle();
+                });
+
+                // Keyboard navigation for carousel
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'ArrowLeft') {
+                        carouselInstance.prev();
+                    } else if (e.key === 'ArrowRight') {
+                        carouselInstance.next();
+                    }
+                });
+            }
+
+            // Stats counter animation
+            function animateStats() {
+                const stats = document.querySelectorAll('.stat-number');
+                stats.forEach(stat => {
+                    const target = parseInt(stat.textContent.replace(/,/g, ''));
+                    if (!isNaN(target)) {
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            stat.textContent = Math.floor(current).toLocaleString();
+                        }, 16);
+                    }
+                });
+            }
+
+            // Trigger stats animation when stats section is visible
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateStats();
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                });
+                statsObserver.observe(statsSection);
+            }
+
+            // Parallax effect for hero section
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+
+            // Form validation (if contact form exists)
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Add your form submission logic here
+                    alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+                });
+            });
+
+            // Mobile menu animation
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            if (navbarToggler && navbarCollapse) {
+                navbarToggler.addEventListener('click', function() {
+                    navbarCollapse.classList.toggle('show');
+                });
+
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navbarCollapse.classList.remove('show');
+                    });
+                });
+            }
+
+            // Chatbot functionality
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotSend = document.getElementById('chatbotSend');
+            const chatbotClose = document.getElementById('chatbotClose');
+
+            if (chatbotToggle && chatbotWindow) {
+                chatbotToggle.addEventListener('click', () => {
+                    chatbotWindow.classList.toggle('active');
+                });
+            }
+
+            if (chatbotClose && chatbotWindow) {
+                chatbotClose.addEventListener('click', () => {
+                    chatbotWindow.classList.remove('active');
+                });
+            }
+
+            if (chatbotSend && chatbotInput) {
+                chatbotSend.addEventListener('click', () => {
+                    const userMessage = chatbotInput.value.trim();
+                    if (userMessage) {
+                        addMessage('user', userMessage);
+                        chatbotInput.value = '';
+                        respondToUser(userMessage);
+                    }
+                });
+
+                chatbotInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        chatbotSend.click();
+                    }
+                });
+            }
+
+            // Chatbot helper functions (defined globally within DOMContentLoaded)
+            function addMessage(sender, text) {
+                if (chatbotMessages) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message', sender);
+                    messageDiv.innerHTML = `
+                        <div class="message-avatar">${sender === 'user' ? 'T' : 'B'}</div>
+                        <div class="message-content">${text}</div>
+                    `;
+                    chatbotMessages.appendChild(messageDiv);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }
+            }
+
+            function respondToUser(userMessage) {
+                // Simulate typing indicator
+                addMessage('bot', '<div class="typing-indicator">Escribiendo...</div>');
+                
+                setTimeout(() => {
+                    // Remove typing indicator
+                    const typingMessage = chatbotMessages.querySelector('.message.bot:last-child');
+                    if (typingMessage) {
+                        typingMessage.remove();
+                    }
+                    
+                    // Add actual response based on user message
+                    let response = getBotResponse(userMessage);
+                    addMessage('bot', response);
+                }, 1000);
+            }
+
+            function getBotResponse(userMessage) {
+                const lowerMessage = userMessage.toLowerCase();
+                
+                // Respuestas sobre Ayacucho
+                if (lowerMessage.includes('ayacucho') || lowerMessage.includes('qué es')) {
+                    return 'Ayacucho es un proyecto de fotografía documental que captura la esencia de Iberoamérica a través de imágenes poderosas y narrativas visuales. Buscamos documentar la realidad social, cultural y humana de nuestra región.';
+                } 
+                
+                // Participación y colaboración
+                else if (lowerMessage.includes('participar') || lowerMessage.includes('colaborar') || lowerMessage.includes('unirme')) {
+                    return 'Puedes participar de varias formas: 📸 Enviando tus fotografías documentales, 🎪 Asistiendo a nuestros eventos y exposiciones, 📱 Siguiendo nuestras redes sociales, 🤝 Colaborando como voluntario en eventos. ¿Te interesa alguna opción específica?';
+                } 
+                
+                // Eventos y ubicaciones
+                else if (lowerMessage.includes('eventos') || lowerMessage.includes('dónde') || lowerMessage.includes('ubicación') || lowerMessage.includes('lugar')) {
+                    return 'Nuestros eventos se realizan en diversas ciudades de Iberoamérica: México, Colombia, Perú, Argentina, Chile, Brasil y más. Próximamente tendremos exposiciones en Lima, Bogotá y Ciudad de México. ¿Te gustaría recibir notificaciones sobre eventos en tu ciudad?';
+                } 
+                
+                // Información de contacto
+                else if (lowerMessage.includes('contacto') || lowerMessage.includes('email') || lowerMessage.includes('teléfono') || lowerMessage.includes('comunicar')) {
+                    return 'Puedes contactarnos por: 📧 Email: info@Ayacucho, 📱 WhatsApp: +51 965 785 770, 📲 Instagram: @AYACUCHO , 🌐 Facebook: AYACUCHO . También puedes usar el formulario de contacto en nuestro sitio web.';
+                } 
+                
+                // Fotografía documental
+                else if (lowerMessage.includes('fotografía') || lowerMessage.includes('documental') || lowerMessage.includes('foto')) {
+                    return 'La fotografía documental es nuestro lenguaje para contar historias reales. Nos enfocamos en capturar momentos auténticos que reflejen la diversidad cultural, los desafíos sociales y la belleza humana de Iberoamérica. ¿Eres fotógrafo o te interesa aprender?';
+                } 
+                
+                // Redes sociales
+                else if (lowerMessage.includes('redes') || lowerMessage.includes('instagram') || lowerMessage.includes('facebook') || lowerMessage.includes('social')) {
+                    return 'Síguenos en nuestras redes sociales: 📸 Instagram: @AYACUCHO  (contenido diario), 👥 Facebook: AYACUCHO (eventos y noticias), 🐦 Twitter: @AYACUCHO  (actualizaciones), 📺 YouTube: POY Latam (documentales y entrevistas). ¡Comparte tus fotos con #AYACUCHO !';
+                } 
+                
+                // Requisitos para participar
+                else if (lowerMessage.includes('requisitos') || lowerMessage.includes('condiciones') || lowerMessage.includes('cómo enviar')) {
+                    return 'Para enviar tus fotografías: 📋 Formato JPG o RAW, 📐 Mínimo 300 DPI, 📝 Incluir título y descripción, 🏷️ Usar hashtag #POYLatam, ✅ Fotografías originales y propias. No hay límite de edad ni experiencia requerida. ¡Todos pueden participar!';
+                } 
+                
+                // Premios y reconocimientos
+                else if (lowerMessage.includes('premios') || lowerMessage.includes('concurso') || lowerMessage.includes('reconocimiento') || lowerMessage.includes('ganar')) {
+                    return 'Organizamos concursos mensuales con premios como: 🏆 Exposición de tu trabajo, 💰 Premios en efectivo, 📚 Cursos de fotografía gratuitos, 🎥 Equipo fotográfico, 🌟 Reconocimiento en nuestras plataformas. ¡El próximo concurso es sobre "Tradiciones Latinoamericanas"!';
+                } 
+                
+                // Cursos y talleres
+                else if (lowerMessage.includes('curso') || lowerMessage.includes('taller') || lowerMessage.includes('aprender') || lowerMessage.includes('enseñar')) {
+                    return 'Ofrecemos talleres gratuitos: 📸 Fundamentos de fotografía documental, 🎨 Composición y narrativa visual, 💡 Técnicas de iluminación natural, 📱 Fotografía móvil profesional, 🖥️ Edición y post-producción. ¿Te interesa algún tema específico?';
+                } 
+                
+                // Historia del proyecto
+                else if (lowerMessage.includes('historia') || lowerMessage.includes('fundación') || lowerMessage.includes('creación') || lowerMessage.includes('inicio')) {
+                    return 'AYACUCHO noticias nació en 2018 con la visión de crear un espacio común para fotógrafos documentales de Iberoamérica. Comenzamos con 5 fotógrafos y ahora somos una comunidad de más de 2,000 artistas comprometidos con contar nuestras historias.';
+                } 
+                
+                // Países participantes
+                else if (lowerMessage.includes('países') || lowerMessage.includes('dónde están') || lowerMessage.includes('cobertura') || lowerMessage.includes('región')) {
+                    return 'Tenemos fotógrafos en todos los países de Iberoamérica: 🇲🇽 México, 🇬🇹 Guatemala, 🇨🇷 Costa Rica, 🇨🇴 Colombia, 🇻🇪 Venezuela, 🇧🇷 Brasil, 🇵🇪 Perú, 🇪🇨 Ecuador, 🇧🇴 Bolivia, 🇦🇷 Argentina, 🇨🇱 Chile, 🇺🇾 Uruguay, 🇪🇸 España, 🇵🇹 Portugal y más. ¿De qué país nos escribes?';
+                } 
+                
+                // Proyectos actuales
+                else if (lowerMessage.includes('proyecto') || lowerMessage.includes('actual') || lowerMessage.includes('trabajando') || lowerMessage.includes('nuevo')) {
+                    return 'Proyectos actuales: 🌎 "Voces de América" - retratos de líderes comunitarios, 🏙️ "Ciudades que Cambian" - transformación urbana, 🌱 "Tierra Nuestra" - agricultura y sostenibilidad, 👥 "Juventud Latina" - nuevas generaciones. ¿Te interesa colaborar en alguno?';
+                } 
+                
+                // Horarios y disponibilidad
+                else if (lowerMessage.includes('horario') || lowerMessage.includes('disponible') || lowerMessage.includes('cuándo') || lowerMessage.includes('tiempo')) {
+                    return 'Nuestro equipo está disponible de lunes a viernes, 9:00 AM a 6:00 PM (GMT-5). Los fines de semana monitoreamos redes sociales. Para emergencias o prensa, tenemos línea 24/7. ¿En qué podemos ayudarte?';
+                } 
+                
+                // Colaboraciones y alianzas
+                else if (lowerMessage.includes('colaboración') || lowerMessage.includes('alianza') || lowerMessage.includes('partnership') || lowerMessage.includes('organización')) {
+                    return 'Colaboramos con: 🏛️ Museos y galerías, 🎓 Universidades, 🏢 ONGs, 📰 Medios de comunicación, 🎪 Festivales de arte. Si representas una organización y quieres aliarte con nosotros, contacta a partnerships@AYACUCHO.com';
+                } 
+                
+                // Saludos
+                else if (lowerMessage.includes('hola') || lowerMessage.includes('hi') || lowerMessage.includes('buenos días') || lowerMessage.includes('buenas tardes')) {
+                    return '¡Hola! 👋 Bienvenido a Ayacucho, el corazón de AYACUCHO . Estoy aquí para ayudarte con cualquier pregunta sobre nuestro proyecto de fotografía documental. ¿Qué te gustaría saber?';
+                } 
+                
+                // Agradecimientos
+                else if (lowerMessage.includes('gracias') || lowerMessage.includes('thanks') || lowerMessage.includes('genial') || lowerMessage.includes('perfecto')) {
+                    return '¡De nada! 😊 Es un placer ayudarte. Si tienes más preguntas o quieres mantenerte conectado con AYACUCHO , no dudes en contactarnos. ¡Que tengas un excelente día! 📸✨';
+                } 
+                
+                // Despedidas
+                else if (lowerMessage.includes('adiós') || lowerMessage.includes('bye') || lowerMessage.includes('hasta luego') || lowerMessage.includes('chao')) {
+                    return '¡Hasta luego! 👋 Gracias por tu interés en AYACUCHO . Recuerda seguirnos en redes sociales y estar atento a nuestros próximos eventos. ¡Esperamos verte pronto! 📸';
+                } 
+                
+                // Preguntas sobre el bot
+                else if (lowerMessage.includes('quién eres') || lowerMessage.includes('qué eres') || lowerMessage.includes('bot') || lowerMessage.includes('robot')) {
+                    return 'Soy el asistente virtual de Ayacucho🤖. Estoy aquí para ayudarte con información sobre nuestro proyecto, eventos, participación y todo lo relacionado con fotografía documental en Iberoamérica. ¿Hay algo específico que te gustaría saber?';
+                } 
+                
+                // Respuesta por defecto
+                else {
+                    const randomResponses = [
+                        'Interesante pregunta. Para información más específica, puedes contactarnos directamente o explorar nuestro sitio web. ¿Hay algo más en lo que pueda ayudarte?',
+                        'Gracias por tu mensaje. Te recomiendo revisar nuestras secciones de eventos, galería y participación para más información. ¿Tienes alguna pregunta específica?',
+                        'No estoy seguro de cómo responder a eso específicamente, pero puedo ayudarte con información sobre AYACUCHO , eventos, participación y fotografía documental. ¿Qué te interesa saber?',
+                        'Tu mensaje es muy importante para nosotros. Para una respuesta más detallada, te sugiero contactar a nuestro equipo directamente. ¿Puedo ayudarte con algo más?'
+                    ];
+                    return randomResponses[Math.floor(Math.random() * randomResponses.length)];
+                }
+            }
+
+            document.querySelectorAll('.quick-response').forEach(response => {
+                response.addEventListener('click', () => {
+                    const quickResponse = response.getAttribute('data-response');
+                    addMessage('user', quickResponse);
+                    respondToUser(quickResponse);
+                });
+            });
+        });
+
+        // Loading animation
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // Console log for developers
+        console.log('AYACUCHO - Fotografía Documental en Iberoamérica');
+        console.log('Desarrollado con pasión por la fotografía y el código');
+    </script>
+</body>
+</html>
